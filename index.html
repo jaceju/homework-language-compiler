@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Test</title>
+<style>
+body {
+    position: relative;
+}
+#editor, #log {
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    float: left;
+    width: 50%;    
+}
+#log {
+    border: 1px solid #ccc;
+    padding: 20px;
+    background-color: #eee;
+}
+</style>
+</head>
+<body>
+<div id="editor">
+<textarea id="wescript" cols="50" rows="15">vc*&! hello</textarea>
+<br />
+<input type="button" id="run" value="Run" />
+</div>
+<pre id="log"></pre>
+<script data-main="run" src="require.js"></script>
+</body>
+</html>
