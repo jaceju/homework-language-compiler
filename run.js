@@ -1,6 +1,11 @@
 require.config({
     paths: {
-        'jquery': '//codeorigin.jquery.com/jquery-1.10.2.min'
+        'jquery': '//codeorigin.jquery.com/jquery-1.10.2.min',
+        'bootstrap': '//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min'
+
+    },
+    shim: {
+        'bootstrap': [ 'jquery' ]
     }
 });
 
@@ -10,8 +15,9 @@ function log(str){
 
 require([
     'jquery',
-    'reader'
-], function ($, Reader, Token) {
+    'reader',
+    'bootstrap'
+], function ($, Reader) {
     $('#run').on('click', function() {
         var dataToBeCompiled = $("#wescript").text();
         var reader = new Reader(dataToBeCompiled);
