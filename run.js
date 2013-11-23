@@ -16,23 +16,23 @@ function log(str){
 require([
     'jquery',
     'reader',
+    'scanner',
+    'token',
     'bootstrap'
-], function ($, Reader) {
-    $('#run').on('click', function() {
-        var dataToBeCompiled = $("#wescript").text();
-        var reader = new Reader(dataToBeCompiled);
-        var retracted = false;
-        while (true) {
-            var nextChar = reader.nextChar();
-            if (nextChar == -1) {
-                break;
+], function ($, Reader, Scanner, Token) {
+    $(function () {
+        $('#run').on('click', function() {
+            var dataToBeCompiled = $("#wescript").val();
+            var reader = new Reader(dataToBeCompiled);
+            var scanner = new Scanner(reader);
+            while (true){
+                var token = scanner.nextToken();
+                if (token == Token.tokens.EOS_TOKEN){
+                    break;
+                }
+         
+                log("Read token: " + Token.backwardMap[token]);
             }
-            // if it meets !, it will retract once
-            if (nextChar == "!" && !retracted) {
-                reader.retract();
-                retracted = true;
-            }
-            log("char: " + nextChar);
-        }
+        });
     });
 });
